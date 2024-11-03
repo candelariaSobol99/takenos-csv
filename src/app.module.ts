@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CsvUploadModule } from './csv-upload/csv-upload.module';
+import { TransactionModule } from './transaction/transaction.module';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -16,7 +17,10 @@ import { CsvUploadModule } from './csv-upload/csv-upload.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    CsvUploadModule,
+    BullModule.forRoot({
+      redis: { host: 'localhost', port: 6379 },
+    }),
+    TransactionModule,
   ],
   controllers: [],
   providers: [],
