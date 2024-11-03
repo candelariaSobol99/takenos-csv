@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TransactionModule } from './transaction/transaction.module';
 import { BullModule } from '@nestjs/bull';
+import { NotificationModule } from './notification/notification.module';
+import { MailerModule } from '@nestjs-modules/mailer';
 
 @Module({
   imports: [
@@ -20,7 +22,18 @@ import { BullModule } from '@nestjs/bull';
     BullModule.forRoot({
       redis: { host: 'localhost', port: 6379 },
     }),
+    MailerModule.forRoot({
+      transport: {
+        host: process.env.MAIL_HOST,
+        port: Number(process.env.MAIL_PORT),
+        auth: {
+          user: process.env.MAIL_USER,
+          pass: process.env.MAIL_PASSWORD,
+        },
+      },
+    }),
     TransactionModule,
+    NotificationModule,
   ],
   controllers: [],
   providers: [],

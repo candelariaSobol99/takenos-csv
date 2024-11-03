@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Transaction } from './entities/transaction.entity';
 import { BullModule } from '@nestjs/bull';
 import { TransactionProcessor } from './transaction.processor';
+import { NotificationService } from 'src/notification/notification.service';
 
 @Module({
   imports: [
@@ -12,6 +13,6 @@ import { TransactionProcessor } from './transaction.processor';
     BullModule.registerQueue({ name: 'csvQueue' }),
   ], 
   controllers: [TransactionController],
-  providers: [TransactionService, TransactionProcessor],
+  providers: [TransactionService, TransactionProcessor, NotificationService],
 })
 export class TransactionModule {}
