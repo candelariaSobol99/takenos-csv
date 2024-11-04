@@ -47,7 +47,23 @@ export class AnalysisService {
     }
   }
 
+  async getTopMerchants(limit: number = 10) {
+    try {
+        const result = await this.transactionRepository
+            .createQueryBuilder('transaction')
+            .select('transaction.merchant', 'merchant')
+            .addSelect('SUM(transaction.amount)', 'totalVolume')
+            .groupBy('transaction.merchant')
+            .orderBy('"totalVolume"', 'DESC')
+            .limit(limit)
+            .getRawMany();
 
+        return result;
+    } catch (error) {
+        console.log(error);
+        throw new InternalServerErrorException('Ha ocurrido un error al intentar obtener los principales merchants por volumen');
+    }
+}
 
 
 }

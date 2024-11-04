@@ -11,4 +11,9 @@ export class AnalysisController {
     return this.analysisService.getTotalVolume(timeFrame);
   }
 
+  @Get('top-merchants')
+  async getTopMerchants() {
+    return this.analysisService.getTopMerchants();
+  }
+
 }
