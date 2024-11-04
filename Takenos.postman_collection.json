@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "c2c79bed-acbd-4f2f-bb4f-3992f895bccc",
+		"name": "Takenos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38646463"
+	},
+	"item": [
+		{
+			"name": "Cargar archivo csv",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbmRlbGFyaWFzb2JvbEBnbWFpbC5jb20iLCJpYXQiOjE3MzA2OTE0MDksImV4cCI6MTczMDY5ODYwOX0.HBulMJYgBkLsLsBXOKAvUUD_PRQNihWGW-vltbTcCuA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/cande/Downloads/test.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://takenos-sobol-ad772e7df5e7.herokuapp.com/transactions/upload",
+					"protocol": "https",
+					"host": [
+						"takenos-sobol-ad772e7df5e7",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"transactions",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Total de transacciones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbmRlbGFyaWFzb2JvbEBnbWFpbC5jb20iLCJpYXQiOjE3MzA2ODQ2MjcsImV4cCI6MTczMDY5MTgyN30.6Fikr-qlbEHhIGmYl1LTF2XXWzp5mTMOBcTr7YyTZA0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://takenos-sobol-ad772e7df5e7.herokuapp.com/analysis/volume/day",
+					"protocol": "https",
+					"host": [
+						"takenos-sobol-ad772e7df5e7",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"analysis",
+						"volume",
+						"day"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get top merchants",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbmRlbGFyaWFzb2JvbEBnbWFpbC5jb20iLCJpYXQiOjE3MzA2ODgwNTcsImV4cCI6MTczMDY5NTI1N30.373I7mGDY6yV38tE-8_iYTCns_DXxBhou8ygI9RYU8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://takenos-sobol-ad772e7df5e7.herokuapp.com/analysis/top-merchants",
+					"protocol": "https",
+					"host": [
+						"takenos-sobol-ad772e7df5e7",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"analysis",
+						"top-merchants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fraudulent Transactions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbmRlbGFyaWFzb2JvbEBnbWFpbC5jb20iLCJpYXQiOjE3MzA2ODgwNTcsImV4cCI6MTczMDY5NTI1N30.373I7mGDY6yV38tE-8_iYTCns_DXxBhou8ygI9RYU8o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://takenos-sobol-ad772e7df5e7.herokuapp.com/analysis/fraudulent-transactions",
+					"protocol": "https",
+					"host": [
+						"takenos-sobol-ad772e7df5e7",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"analysis",
+						"fraudulent-transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"candelariasobol@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://takenos-sobol-ad772e7df5e7.herokuapp.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"takenos-sobol-ad772e7df5e7",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
