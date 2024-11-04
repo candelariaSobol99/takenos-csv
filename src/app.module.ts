@@ -5,6 +5,7 @@ import { TransactionModule } from './transaction/transaction.module';
 import { BullModule } from '@nestjs/bull';
 import { NotificationModule } from './notification/notification.module';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { AnalysisModule } from './analysis/analysis.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
     }),
     TransactionModule,
     NotificationModule,
+    AnalysisModule,
   ],
   controllers: [],
   providers: [],
