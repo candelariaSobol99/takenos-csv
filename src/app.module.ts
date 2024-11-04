@@ -28,7 +28,11 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true,
     }),
     BullModule.forRoot({
-      redis: { host: 'localhost', port: 6379 },
+      redis: {
+        host: '00539r.stackhero-network.com', 
+        port: 10696, 
+        password: 'AXsyHMp3sxJZgpeKqW7jy5c6zamXuUBxnskGa5Oihy7LZCvqxed1UYVuytsmSIlm',
+      },
     }),
     MailerModule.forRoot({
       transport: {
