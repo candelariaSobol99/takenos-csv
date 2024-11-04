@@ -18,9 +18,9 @@ export class TransactionService {
         @InjectQueue('csvQueue') private csvQueue: Queue,
     ) {}
 
-    async processFile(file: Express.Multer.File) {
+    async processFile(file: Express.Multer.File, email) {
         this.logger.log('Adding file to the queue for processing');
-        await this.csvQueue.add('csvProcessing', { fileBuffer: file.buffer });
+        await this.csvQueue.add('csvProcessing', { fileBuffer: file.buffer, email });
     }
 
     async parseAndSaveTransactions(fileBuffer: Buffer) {

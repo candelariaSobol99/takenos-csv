@@ -16,7 +16,7 @@ export class TransactionProcessor {
     @Process('csvProcessing')
     async handleFileProcessing(job: Job) {
         this.logger.log('Processing file from job');
-        const { fileBuffer } = job.data;
+        const { fileBuffer, email } = job.data;
 
         const buffer = Buffer.isBuffer(fileBuffer) ? fileBuffer : Buffer.from(fileBuffer.data);
 
@@ -24,7 +24,7 @@ export class TransactionProcessor {
             await this.transactionService.parseAndSaveTransactions(buffer);
             const successContent = 'El archivo se procesó satisfactoriamente. Las transacciones han sido guardadas correctamente.';
             await this.notificationService.sendNotificationEmail(
-                'candelariasobol@gmail.com',
+                email,
                 'Procesamiento completo',
                 successContent
             )
@@ -32,7 +32,7 @@ export class TransactionProcessor {
         } catch (error) {
             const errorContent = 'Hubo un problema procesando el archivo. Error: ' + error.message;
             await this.notificationService.sendNotificationEmail(
-                'candelariasobol@gmail.com',
+                email,
                 'Error en el procesamiento',
                 errorContent
             );

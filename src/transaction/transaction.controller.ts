@@ -2,6 +2,7 @@ import { Controller, Post, UploadedFile, UseInterceptors, HttpCode, Logger, UseG
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TransactionService } from './transaction.service';
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
+import { User } from 'src/auth/decorators/user.decorator';
 
 @Controller('transactions')
 @UseGuards(JwtAuthGuard)
@@ -14,9 +15,10 @@ export class TransactionController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   @HttpCode(202)
-  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @User() user: any) {
     this.logger.log('File received for processing');
-    await this.transactionService.processFile(file);
+    const email = user.email;
+    await this.transactionService.processFile(file, email);
     return { message: 'File received and processing started' };
   }
 }
