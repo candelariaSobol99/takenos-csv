@@ -16,4 +16,9 @@ export class AnalysisController {
     return this.analysisService.getTopMerchants();
   }
 
+  @Get('fraudulent-transactions')
+  async getFraudulentTransactions() {
+    return this.analysisService.detectFraudulentTransactions();
+  }
+
 }
