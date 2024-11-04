@@ -4,6 +4,14 @@
 
 # Takenos API
 
+## Descripción
+Takenos API es una aplicación diseñada para gestionar transacciones y análisis de datos financieros. Permite la carga de archivos CSV, el análisis de transacciones, y la gestión de usuarios con autenticación mediante JWT.
+
+## Requisitos Previos
+Asegúrate de tener instalado:
+- [Node.js](https://nodejs.org/) (versión 14 o superior)
+- [Docker](https://www.docker.com/) y [Docker Compose](https://docs.docker.com/compose/)
+
 1. Clonar proyecto
 2. ```npm install```
 3. Clonar el archivo ```.env.template``` y renombrarlo a ```.env```
