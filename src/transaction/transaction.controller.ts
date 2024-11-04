@@ -1,8 +1,10 @@
-import { Controller, Post, UploadedFile, UseInterceptors, HttpCode, Logger } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors, HttpCode, Logger, UseGuards } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { TransactionService } from './transaction.service';
+import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard';
 
 @Controller('transactions')
+@UseGuards(JwtAuthGuard)
 export class TransactionController {
 
   private readonly logger = new Logger(TransactionController.name);
